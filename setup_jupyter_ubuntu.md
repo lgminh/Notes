@@ -84,7 +84,6 @@ You can set working folder of jupyter to keep all notebooks and base_url to acce
                         proxy_set_header      Upgrade "websocket";
                         proxy_set_header      Connection "Upgrade";
                         proxy_read_timeout    86400;
-                }
-```
+                }```
 
-	- Reload nginx `systemctl reload nginx`. 
+- Reload nginx `systemctl reload nginx`. 
