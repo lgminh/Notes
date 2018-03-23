@@ -18,7 +18,7 @@
 - `cd <your_folder_name>`
 
 **Step 6**
-- Set $AIRFLOW_HOME= <your_folder_path> by running `export AIRFLOW_HOME= ~/<your_folder_path>`.
+- Set $AIRFLOW_HOME= /root/../airflow by running `export AIRFLOW_HOME= ~/airflow`.
 
 **Step 7**
 - Run `airflow initdb` and airflow will create `airflow.cfg`
