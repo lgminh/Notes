@@ -1,4 +1,4 @@
-etting up Jupyter on Ubuntu 16.04.04
+# Setting up Jupyter on Ubuntu 16.04.04
 
 **Step 1:** 
 Open terminal then run `pip install jupyter`
@@ -25,11 +25,13 @@ You can set working folder of jupyter to keep all notebooks and base_url to acce
     -If you want to run **notebook in background**, first install **nohup** then run `nohup jupyter notebook -p <port> &`.
     - Open web browser and try accessing `localhost:<jupyter_port>` to check if jupyter is running or not.
 
-## Set up Jupyter behind Nginx as Proxy Server
+# Set up Jupyter behind Nginx as Proxy Server
 - This instruction is considered to be followed if you set up Jupyter behind **Nginx as Proxy Server**.
 	
 	-  Install Nginx 
 	
+	-  Install Jupyter
+
 	-  Create `/etc/nginx/con.d/<your_file_name>.conf`
 	
 	- Set the [server block](https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms)  in your created file. To apply this config, first you must use **Nginx HTTP** and **Nginx HTTPS** firewall rule by running `ufw allow 'Nginx HTTP'` and `ufw allow 'Nginx HTTPS'`.
