@@ -61,4 +61,5 @@ nohup airflow scheduler &`
 - Prepare your python script.
 - Copy your python script into folder `dags`.
 - Run `python -m py_compile <your_python_script>`.
+- Restart scheduler `nohup airflow scheduler -p <your_port> &`
 - Open Web UI to check your DAG.
