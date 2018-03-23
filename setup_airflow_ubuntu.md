@@ -7,25 +7,35 @@
 **Step 2**
 - Install apache-airflow by running `pip install apache-airflow[extra-package]` if you use Python 2.X, otherwise (Python 3.X) then run `pip3 install apache-airflow[extra-package]` . You can see what **extra-package** is for your need [here](https://airflow.apache.org/installation.html). 		
 - Just run `pip install apache-airflow` if you want to install all package.
+
+**Step 3:**
+- Run docker postgres by running `docker run --name postgres -e POSTGRES_USER=<your_user> -e POSTGRES_PASSWORD=<your_password> -e POSTGRES_DB=<your_db> -p 5432:5432 -d mdillon/postgis:9.5`
 	
-**Step 3**
-- Create folder `<your_folder_name>` to contain airflow config, dags, etc.
-
 **Step 4**
-- Set $AIRFLOW_HOME= <your_folder_path> by running `export AIRFLOW_HOME= <your_folder_path>`.
+- Create folder `airflow` to contain airflow config, dags, etc.
 
-**Step 5**
-- Create folder `dags` to contain all your dags.
-- Create file `<your_folder_name>/airflow.cfg`.
-- Find the line start with `executor = CeleryExecutor` and change in into  `executor = LocalExecutor`.
+**Step 5:**
+- `cd <your_folder_name>`
 
 **Step 6**
+- Set $AIRFLOW_HOME= <your_folder_path> by running `export AIRFLOW_HOME= ~/<your_folder_path>`.
+
+**Step 7**
+- Run `airflow initdb` and airflow will create `airflow.cfg`
+
+**Step 8**
+- Create folder `dags` to contain all your dags inside folder `airflow`.
+- Open file `airflow.cfg`.
+- Find the line that starts with `sql_alchemy_conn = postgresql+psycopg2//...` and change it into `sql_alchemy_conn = postgresql+psycopg2://<docker_postgres_user>:<docker_postgres_password>@localhost:5432/<your_db>`
+- Find the line that starts with `executor = CeleryExecutor` and change in into  `executor = LocalExecutor`.
+
+**Step 9**
 - Start airflow webserver/scheduler by running `airflow webserver -p <your_port>` and `airflow scheduler`
 - If you want to **run webserver/schduler in background**, install **nohup** and run 
 `nohup airflow webserver -p <your_port> -D &
 nohup airflow scheduler &`
 	
-**Step 7 (Optional) : Setting up Airlow behind Nginx as Proxy Server**
+**Step 10 (Optional) : Setting up Airlow behind Nginx as Proxy Server**
 - Install Airflow
 - Install Nginx
 - Allow **Nginx HTTP** and **Nginx HTTPS** using Ubuntu firewall.
