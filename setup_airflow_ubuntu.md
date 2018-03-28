@@ -60,7 +60,7 @@ nohup airflow scheduler &`
 **Adding new dags**
 - Prepare your python script.
 - Copy your python script into folder `dags`.
-- Run `python -m py_compile <your_python_script>.py`.
+- Run `python -m py_compile <your_python_script>.py` to compile your script, the `<your_python_script>.pyc` is inside `__pycache__`.
 - Move `<your_python_script>.pyc` out of `__pycache__` inside `dags`.
 - Restart `webserver` and `scheduler`. (If you get error `already running on PID` then remove `airflow-webserver.pid` and `airflow-scheduler.pid` first)
 - Open Web UI to check your DAG.
